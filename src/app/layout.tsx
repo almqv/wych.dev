@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import Layout from "@/components/layout";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -34,9 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="w-full flex flex-col justify-center">
-            {children}
-          </main>
+          <Layout>{children}</Layout>
         </ThemeProvider>
       </body>
     </html>
