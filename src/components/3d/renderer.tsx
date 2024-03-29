@@ -104,7 +104,7 @@ const Renderer: React.FC<
 > = ({ cam = { pos: new THREE.Vector3(0, 0, 0) }, ...props }) => {
   return (
     <Canvas gl={{ alpha: true }} className="transform">
-      <pointLight position={[0, 0, 0]} color="#9BC995" />
+      <pointLight position={[0, 0, 0]} color="#fff" />
       <perspectiveCamera position={cam.pos} />
       <FuncRenderer cam={cam} {...props} />
     </Canvas>

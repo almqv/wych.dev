@@ -67,7 +67,7 @@ const update = (pc: THREE.Points<THREE.BufferGeometry>, group: THREE.Group) => {
 const SphereCurve = {
   func: { init: init, update: update },
   cam: {
-    pos: new THREE.Vector3(0, 0, 18).multiplyScalar(2),
+    pos: new THREE.Vector3(0, 0, 18).multiplyScalar(1.7),
     rotation: new THREE.Vector3(0, 0, 180),
   },
   particles: {
