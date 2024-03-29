@@ -6,27 +6,25 @@ import { FaXTwitter } from "react-icons/fa6";
 
 type NavLink = {
   label: string;
-  icon: React.ReactNode;
+  icon: React.FC<{ className?: string }>;
   href: string;
 };
-
-const IconClassname = "w-5 h-5";
 
 const NavLinks: NavLink[] = [
   {
     label: "GitHub",
     href: "https://github.com/almqv",
-    icon: <GitHub className={IconClassname} />,
+    icon: GitHub,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/almqv/",
-    icon: <LinkedInLogoIcon className={IconClassname} />,
+    icon: LinkedInLogoIcon,
   },
   {
     label: "X",
     href: "https://x.com/fcvprzhfgsybj",
-    icon: <FaXTwitter className={IconClassname} />,
+    icon: FaXTwitter,
   },
 ];
 

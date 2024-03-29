@@ -30,9 +30,10 @@ const Header = () => (
         <ThemeButton className="w-4 h-4 hidden sm:block" />
         <NavCommand />
         <ul className="flex-row space-x-2 w-fit h-full items-center hidden sm:flex">
-          {NavLinks.map((link) => (
+          {NavLinks.map((link, index) => (
             <li>
               <Link
+                key={index}
                 href={link.href}
                 target={link.href.match("http") ? "_blank" : "_self"}
                 className="flex flex-row items-center"
@@ -42,7 +43,7 @@ const Header = () => (
                   size="icon"
                   className="transition-opacity hover:bg-transparent hover:opacity-75"
                 >
-                  {link.icon}
+                  <link.icon className="h-5 w-5" />
                 </Button>
               </Link>
             </li>

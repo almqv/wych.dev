@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -18,17 +16,13 @@ import { GalleryHorizontalEnd, Home, SunMoon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useActionCommand } from "@/hooks/useActionCommand";
 import { useTheme } from "next-themes";
+import NavLinks from "../navlinks";
 
 type NavCommandProps = {
   className?: string;
 };
 
-const NavCommand: React.FC<NavCommandProps> = ({
-  className,
-  ...props
-}) => {
-  const [value, setValue] = useState("");
-
+const NavCommand: React.FC<NavCommandProps> = ({ className, ...props }) => {
   const router = useRouter();
   const { open: actionOpen, setOpen: setActionOpen } = useActionCommand();
   const { theme, setTheme } = useTheme();
@@ -61,12 +55,7 @@ const NavCommand: React.FC<NavCommandProps> = ({
       </Button>
 
       <CommandDialog open={actionOpen} onOpenChange={setActionOpen}>
-        <CommandInput
-          placeholder="Type a command or search..."
-          onValueChange={(search) => {
-            setValue(search);
-          }}
-        />
+        <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandGroup heading="Navigation">
             <CommandItem
@@ -101,6 +90,20 @@ const NavCommand: React.FC<NavCommandProps> = ({
               </span>
               <CommandShortcut>⌘L</CommandShortcut>
             </CommandItem>
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="External links">
+            {NavLinks.map((link) => (
+              <CommandItem
+                key={link.href}
+                onSelect={action(() => {
+                  router.push(link.href);
+                })}
+              >
+                <link.icon className="mr-2 w-4 h-4" />
+                <span>{link.label}</span>
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
