@@ -43,7 +43,7 @@ const Header = () => (
                   size="icon"
                   className="transition-opacity hover:bg-transparent hover:opacity-75"
                 >
-                  <link.icon className="h-5 w-5" />
+                  <link.icon className="h-4 w-4" />
                 </Button>
               </Link>
             </li>
