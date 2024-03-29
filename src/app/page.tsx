@@ -41,16 +41,16 @@ export default function Home() {
               </p>
               <p>
                 Currently working on{" "}
-                <ILink href="https://rembr.co" target="_blank">
+                <ILink href="https://rembr.co" target="_blank" className="px-0">
                   ingenuity
                 </ILink>
                 . Some of my projects are open-source (FOSS), and if you are
                 interested, you can find them on my{" "}
-                <ILink href="https://git.wych.dev/elal" target="_blank">
+                <ILink href="https://git.wych.dev/elal" target="_blank" className="px-0">
                   self-hosted git-server
                 </ILink>{" "}
                 or{" "}
-                <ILink href="https://github.com/almqv" target="_blank">
+                <ILink href="https://github.com/almqv" target="_blank" className="px-0">
                   GitHub
                 </ILink>
                 .

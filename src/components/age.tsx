@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const hydrogenLineFrequency_Hz = 1420.405751768 * 10 ** 6;
 
@@ -95,7 +95,7 @@ const FormatBigNumber: React.FC<FormatBigNumberProps> = ({
       </span>
     );
   } else {
-    return null;
+    return <span className={className}>---.------------</span>;
   }
 };
 

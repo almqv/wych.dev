@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 type ILinkProps = {
   href: string;
@@ -14,15 +14,10 @@ const ILink: React.FC<ILinkProps> = ({
   ...props
 }) => {
   return (
-    <Link
-      href={href}
-      className={cn(
-        "transition-colors text-accent-foreground hover:text-accent-foreground/80",
-        className,
-      )}
-      {...props}
-    >
-      {children}
+    <Link href={href} {...props}>
+      <Button className={className} variant="link">
+        {children}
+      </Button>
     </Link>
   );
 };
