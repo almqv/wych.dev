@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato as FontSans } from "next/font/google";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,10 +11,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import Layout from "@/components/layout";
 
-const fontSans = FontSans({
-  weight: ["400", "700"],
-  subsets: ["latin", "latin-ext"],
-});
+import fonts from "@/components/fonts";
 
 export default function RootLayout({
   children,
@@ -26,7 +23,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background text-foreground antialiased",
-          fontSans.className,
+          fonts.sans.className
         )}
       >
         <ThemeProvider

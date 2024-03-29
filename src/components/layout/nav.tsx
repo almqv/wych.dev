@@ -17,10 +17,6 @@ import {
 import {
   GalleryHorizontalEnd,
   Home,
-  PanelRightClose,
-  Scroll,
-  Search,
-  Settings,
   SunMoon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
