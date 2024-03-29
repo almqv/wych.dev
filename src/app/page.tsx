@@ -1,6 +1,8 @@
 import ThingCurve from "@/components/3d/curves/thing";
 import RenderedSection from "@/components/3d/renderedsection";
 import AgeHCyclesDisplay from "@/components/age";
+import fonts from "@/components/fonts";
+import ILink from "@/components/ilink";
 import {
   Card,
   CardContent,
@@ -8,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -23,15 +26,32 @@ export default function Home() {
             <CardTitle>Elias Almqvist</CardTitle>
             <CardDescription className="pl-0 space-y-4">
               <p>
-                I am a {<AgeHCyclesDisplay precision={6} />}{" "}
+                I am a{" "}
+                {
+                  <AgeHCyclesDisplay
+                    className={cn("font-bold", fonts.mono.className)}
+                    precision={6}
+                  />
+                }{" "}
                 <span className="font-bold">hydrogen-line-cycles</span> old{" "}
                 <span className="font-bold">human-</span> founder, engineer, and
                 hacker with a passion for CS, physics, and mathematics.
               </p>
               <p>
-                Currently working on ingenuity. Most of my projects are
-                open-source, and if you are interested, you can find all of my
-                projects on my git-server or GitHub.
+                Currently working on{" "}
+                <ILink href="https://rembr.co" target="_blank">
+                  ingenuity
+                </ILink>
+                . Most of my projects are open-source, and if you are
+                interested, you can find all of my projects on my{" "}
+                <ILink href="https://git.wych.dev/elal" target="_blank">
+                  git-server
+                </ILink>{" "}
+                or{" "}
+                <ILink href="https://github.com/almqv" target="_blank">
+                  GitHub
+                </ILink>
+                .
               </p>
             </CardDescription>
             {/* <CardContent></CardContent> */}

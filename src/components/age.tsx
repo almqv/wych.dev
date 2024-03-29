@@ -59,9 +59,9 @@ const FormatBigNumber: React.FC<FormatBigNumberProps> = ({
   const suffix = suffixes[exponent];
 
   return (
-    <span className={cn("inline-flex flex-row space-x-0.5 mr-1", className)}>
+    <span className={cn("inline-flex flex-row space-x-0.5 mr-0.5", className)}>
       <span className="inline-block">{formattedBase}</span>
-      <span className="inline-block italic">{suffix}</span>
+      <span className="inline-block">{suffix}</span>
     </span>
   );
 };
@@ -80,7 +80,7 @@ const AgeHCyclesDisplay: React.FC<AgeHCyclesDisplayProps> = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setCycles(secondsToHydrogenLineCycles(getAge()));
-    }, 400);
+    }, 40);
 
     return () => clearInterval(interval);
   });
