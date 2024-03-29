@@ -13,6 +13,9 @@ import Layout from "@/components/layout";
 
 import fonts from "@/components/fonts";
 
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 export default function RootLayout({
   children,
 }: {
@@ -34,6 +37,8 @@ export default function RootLayout({
         >
           <Layout>{children}</Layout>
         </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
