@@ -1,34 +1,26 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Keybinds from "@/components/inputs/keybinds";
+import Keybinds from "@/components/binds";
 import { useActionCommand } from "@/hooks/useActionCommand";
-import { useSidebar } from "@/hooks/useSidebar";
 import { useTheme } from "next-themes";
 
 const NavBinds = () => {
   const router = useRouter();
   const { open: actionOpen, setOpen: setActionOpen } = useActionCommand();
-  const { open: sidebarOpen, setOpen: setSidebarOpen } = useSidebar();
   const { theme, setTheme } = useTheme();
 
   return (
     <Keybinds
       keybinds={{
-        f: () => {
+        h: () => {
           router.push("/");
         },
-        s: () => {
-          router.push("/settings");
-        },
-        h: () => {
-          router.push("/history");
+        p: () => {
+          router.push("/posts");
         },
         k: () => {
           setActionOpen(!actionOpen);
-        },
-        g: () => {
-          setSidebarOpen(!sidebarOpen);
         },
         l: () => {
           setTheme(theme === "light" ? "dark" : "light");

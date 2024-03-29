@@ -32,7 +32,7 @@ const Keybinds: React.FC<KeybindsProps> = ({ keybinds }) => {
     return () => document.removeEventListener("keydown", keyDownHandler);
   });
 
-  return <div className="" id="keybinds_handler" />;
+  return <div className="hidden" id="keybinds_handler" />;
 };
 
 export default Keybinds;

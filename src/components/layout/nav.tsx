@@ -55,15 +55,15 @@ const ActionCommand: React.FC<ActionCommandProps> = ({
       <Button
         variant="outline"
         className={cn(
-          "relative h-8 w-full justify-start rounded-[0.5rem] bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64",
+          "relative h-8 justify-start rounded-[0.5rem] bg-background text-sm font-normal text-muted-foreground shadow-none pr-12 md:w-40 lg:w-64",
           className,
         )}
         onClick={() => setActionOpen(true)}
         {...props}
       >
-        <span className="hidden lg:inline-flex">Navigation...</span>
+        <span className="hidden lg:inline-flex">Search navigation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
