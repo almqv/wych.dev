@@ -3,6 +3,11 @@ import { cn } from "@/lib/utils";
 import ILink from "@/components/ilink";
 import Image from "next/image";
 
+const quote = `Hello, friend. Hello, friend? 
+That's lame. Maybe I should give you a name.
+But that's a slippery slope. You're only in my 404 page. 
+We have to remember that.`;
+
 const NotFound = () => (
   <div
     className={cn(
@@ -11,10 +16,12 @@ const NotFound = () => (
     )}
   >
     <Image src="/404.jpg" alt="Error 404\nNot Found" width={400} height={400} />
-    <p className="max-w-md text-foreground/60">
-      Hello, friend. Hello, friend? That's lame. Maybe I should give you a name.
-      But that's a slippery slope. You're only in my 404 page. We have to
-      remember that.
+    <p className="max-w-md text-foreground/60 space-y-2">
+      {quote.split("\n").map((line, i) => (
+        <span key={i} className="block">
+          {'>'} {line}
+        </span>
+      ))}
     </p>
     <div>
       <ILink href="#">Stay</ILink>
