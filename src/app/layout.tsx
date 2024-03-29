@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 };
 
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,11 +24,20 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background text-foreground font-sans antialiased",
           fontSans.className,
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="w-full flex flex-col justify-center">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
