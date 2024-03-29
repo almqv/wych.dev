@@ -1,4 +1,4 @@
-import SphereCurve from "@/components/3d/curves/sphere";
+import ThingCurve from "@/components/3d/curves/thing";
 import RenderedSection from "@/components/3d/renderedsection";
 
 export default function Home() {
@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <RenderedSection
         id="about"
-        curve={SphereCurve}
+        curve={ThingCurve}
         className="relative w-full h-full px-4 md:px-8 max-w-screen-2xl"
         curveClassname="w-[38rem] h-[52rem] -right-32 md:right-8 overflow-hidden"
       >

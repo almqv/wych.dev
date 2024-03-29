@@ -64,7 +64,7 @@ const update = (pc: THREE.Points<THREE.BufferGeometry>, group: THREE.Group) => {
 };
 
 // INFO: Curve definition
-const SphereCurve = {
+const ThingCurve = {
   func: { init: init, update: update },
   cam: {
     pos: new THREE.Vector3(0, 0, 18).multiplyScalar(1.7),
@@ -79,4 +79,4 @@ const SphereCurve = {
   }, // 87a
 };
 
-export default SphereCurve;
+export default ThingCurve;
