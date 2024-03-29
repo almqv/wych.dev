@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Wych",
+  title: "\\wych.dev",
   description: "In the wych elm's shadow, veritas whispers brew.",
 };
 
