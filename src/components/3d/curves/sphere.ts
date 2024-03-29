@@ -24,8 +24,8 @@ const init = () => {
     z = z - t * z + t * b * x * y + t * x * z;
     arrayCurve.push(
       new THREE.Vector3(x, y, z).multiplyScalar(
-        1 - startScatter / 2 + Math.random() * startScatter
-      )
+        1 - startScatter / 2 + Math.random() * startScatter,
+      ),
     );
   }
   return arrayCurve;
@@ -35,10 +35,10 @@ const update = (pc: THREE.Points<THREE.BufferGeometry>, group: THREE.Group) => {
   //Varying the points on each frame
   // step += 0.01;
   var geometry = pc.geometry;
-  var a = 0.9  //+ Math.random() * .2;
-  var b = 3.4  //+ Math.random() * .1;
-  var f = 9.9  //+ Math.random() * .2;
-  var g = 1    //+ Math.random() * .1;
+  var a = 0.9; //+ Math.random() * .2;
+  var b = 3.4; //+ Math.random() * .1;
+  var f = 9.9; //+ Math.random() * .2;
+  var g = 1; //+ Math.random() * .1;
   var t = 0.001;
 
   var positions = geometry.attributes.position;
@@ -52,7 +52,7 @@ const update = (pc: THREE.Points<THREE.BufferGeometry>, group: THREE.Group) => {
       i,
       x - t * a * x + t * y * y - t * z * z + t * a * f,
       y - t * y + t * x * y - t * b * x * z + t * g,
-      z - t * z + t * b * x * y + t * x * z
+      z - t * z + t * b * x * y + t * x * z,
     );
   }
   positions.needsUpdate = true;
@@ -64,10 +64,10 @@ const update = (pc: THREE.Points<THREE.BufferGeometry>, group: THREE.Group) => {
 };
 
 // INFO: Curve definition
-const LorentzCurve: CurveProps = {
+const SphereCurve = {
   func: { init: init, update: update },
   cam: {
-    pos: new THREE.Vector3(8, 8, 18).multiplyScalar(2),
+    pos: new THREE.Vector3(0, 0, 18).multiplyScalar(2),
     rotation: new THREE.Vector3(0, 0, 180),
   },
   particles: {
@@ -79,4 +79,4 @@ const LorentzCurve: CurveProps = {
   }, // 87a
 };
 
-export default LorentzCurve;
+export default SphereCurve;
