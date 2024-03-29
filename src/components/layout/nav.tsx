@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -19,11 +19,11 @@ import { useRouter } from "next/navigation";
 import { useActionCommand } from "@/hooks/useActionCommand";
 import { useTheme } from "next-themes";
 
-type ActionCommandProps = {
+type NavCommandProps = {
   className?: string;
 };
 
-const ActionCommand: React.FC<ActionCommandProps> = ({
+const NavCommand: React.FC<NavCommandProps> = ({
   className,
   ...props
 }) => {
@@ -108,4 +108,4 @@ const ActionCommand: React.FC<ActionCommandProps> = ({
   );
 };
 
-export default ActionCommand;
+export default NavCommand;

@@ -1,10 +1,11 @@
 import { Separator } from "@/components/ui/separator";
-import Nav from "./nav";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
-import NavLinks from "../navlinks";
 import { Button } from "../ui/button";
+
+import Link from "next/link";
 import ThemeButton from "../themebutton";
+import NavLinks from "../navlinks";
+import NavCommand from "./nav";
 
 const Header = () => (
   <header className="w-full flex flex-col justify-center items-center">
@@ -26,9 +27,9 @@ const Header = () => (
         </Link>
       </div>
       <div className="flex flex-row items-center space-x-2">
-        <ThemeButton className="w-4 h-4" />
-        <Nav />
-        <ul className="flex flex-row space-x-2 w-fit h-full items-center">
+        <ThemeButton className="w-4 h-4 hidden sm:block" />
+        <NavCommand />
+        <ul className="flex-row space-x-2 w-fit h-full items-center hidden sm:flex">
           {NavLinks.map((link) => (
             <li>
               <Link
