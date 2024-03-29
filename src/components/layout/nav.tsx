@@ -14,11 +14,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
-import {
-  GalleryHorizontalEnd,
-  Home,
-  SunMoon,
-} from "lucide-react";
+import { GalleryHorizontalEnd, Home, SunMoon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useActionCommand } from "@/hooks/useActionCommand";
 import { useTheme } from "next-themes";

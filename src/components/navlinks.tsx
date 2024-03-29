@@ -1,4 +1,7 @@
-import { GitHubLogoIcon as GitHub, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import {
+  GitHubLogoIcon as GitHub,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
 import { FaXTwitter } from "react-icons/fa6";
 
 type NavLink = {
