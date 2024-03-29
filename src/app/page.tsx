@@ -1,6 +1,6 @@
 import ThingCurve from "@/components/3d/curves/thing";
 import RenderedSection from "@/components/3d/renderedsection";
-import AgeDisplay from "@/components/age";
+import AgeHCyclesDisplay from "@/components/age";
 import {
   Card,
   CardContent,
@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 
 export default function Home() {
   return (
@@ -24,9 +23,10 @@ export default function Home() {
             <CardTitle>Elias Almqvist</CardTitle>
             <CardDescription className="pl-0 space-y-4">
               <p>
-                I am a {<AgeDisplay precision={10} />}-year-old <span className="font-bold">human-</span>{" "}
-                founder, engineer, and hacker with a passion for CS, physics,
-                and mathematics.
+                I am a {<AgeHCyclesDisplay precision={6} />}{" "}
+                <span className="font-bold">hydrogen-line-cycles</span> old{" "}
+                <span className="font-bold">human-</span> founder, engineer, and
+                hacker with a passion for CS, physics, and mathematics.
               </p>
               <p>
                 Currently working on ingenuity. Most of my projects are

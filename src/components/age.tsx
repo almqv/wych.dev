@@ -1,11 +1,9 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-type AgeDisplayProps = {
-  className?: string;
-  precision?: number;
-};
+const hydrogenLineFrequency_Hz = 1420.405751768 * 10 ** 6;
 
 function getAge() {
   let birth = 1050019200;
@@ -13,35 +11,83 @@ function getAge() {
   return now - birth;
 }
 
-function secondsToYears(secs: number, precision: number) {
-  let years = secs / 31556952;
-  return years.toFixed(precision);
+function secondsToHydrogenLineCycles(secs: number) {
+  return secs * hydrogenLineFrequency_Hz;
 }
 
-const AgeDisplay: React.FC<AgeDisplayProps> = ({
+type FormatBigNumberProps = {
+  num: number;
+  precision: number;
+  className?: string;
+};
+
+const FormatBigNumber: React.FC<FormatBigNumberProps> = ({
+  num,
+  precision,
+  className,
+}) => {
+  const suffixes = [
+    "",
+    "K",
+    "M",
+    "Bn",
+    "T",
+    "Q",
+    "Qt",
+    "Sx",
+    "Sp",
+    "O",
+    "N",
+    "D",
+    "Ud",
+    "Dd",
+    "Td",
+    "Qad",
+    "Qid",
+    "Sd",
+    "Sed",
+    "Od",
+    "Nod",
+    "Vg",
+  ];
+
+  let exponent = Math.floor(Math.log10(num) / 3);
+  exponent = Math.min(exponent, suffixes.length - 1);
+
+  const base = num / Math.pow(10, exponent * 3);
+  const formattedBase = base.toFixed(precision);
+  const suffix = suffixes[exponent];
+
+  return (
+    <span className={cn("inline-flex flex-row space-x-0.5 mr-1", className)}>
+      <span className="inline-block">{formattedBase}</span>
+      <span className="inline-block italic">{suffix}</span>
+    </span>
+  );
+};
+
+type AgeHCyclesDisplayProps = {
+  className?: string;
+  precision?: number;
+};
+
+const AgeHCyclesDisplay: React.FC<AgeHCyclesDisplayProps> = ({
   className,
   precision = 2,
 }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-
-  const anim = useCallback(() => {
-    if (!ref.current) {
-      return;
-    }
-    ref.current.textContent = secondsToYears(getAge(), precision);
-  }, [])
+  const [cycles, setCycles] = useState<number>(0);
 
   useEffect(() => {
-    const animFrame = requestAnimationFrame(() => {
-      anim();
-    });
+    const interval = setInterval(() => {
+      setCycles(secondsToHydrogenLineCycles(getAge()));
+    }, 400);
 
-    return () => {
-      cancelAnimationFrame(animFrame);
-    };
-  }, [getAge, ref.current]);
+    return () => clearInterval(interval);
+  });
 
-  return <span ref={ref} className={className}>??</span>;
+  return (
+    <FormatBigNumber num={cycles} precision={precision} className={className} />
+  );
 };
 
-export default AgeDisplay;
+export default AgeHCyclesDisplay;
