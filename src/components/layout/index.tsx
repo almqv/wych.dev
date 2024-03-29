@@ -5,7 +5,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      <main className="w-full min-h-screen flex justify-center">
+      <main className="w-full flex justify-center">
         {children}
       </main>
       <NavBinds />

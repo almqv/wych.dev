@@ -8,7 +8,7 @@ import NavLinks from "../navlinks";
 import NavCommand from "./nav";
 
 const Header = () => (
-  <header className="w-full flex flex-col justify-center items-center">
+  <header className="w-full h-14 flex flex-col justify-center items-center">
     <div className="py-2 px-4 md:px-8 flex flex-row justify-between w-full max-w-screen-2xl">
       <div className="flex flex-row items-center">
         <Link
