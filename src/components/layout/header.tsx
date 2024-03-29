@@ -1,9 +1,7 @@
 import { Separator } from "@/components/ui/separator";
-import { Button } from "../ui/button";
 
 import Link from "next/link";
 import ThemeButton from "../themebutton";
-import NavLinks from "../navlinks";
 import NavCommand from "./nav";
 
 import Logo from "@/components/logo";

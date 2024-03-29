@@ -35,7 +35,7 @@ export default function Home() {
                   />
                 }{" "}
                 <span className="font-bold">hydrogen-line-cycles</span>{" "}
-                <span className="text-xs text-foreground/40">(± 2 MHz)</span>{" "}
+                <span className="text-xs text-foreground/40">(± 2 mHz)</span>{" "}
                 old <span className="font-bold">human-</span> founder, engineer,
                 and hacker with a passion for CS, physics, and mathematics.
               </span>
