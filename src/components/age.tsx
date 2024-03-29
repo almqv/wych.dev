@@ -5,12 +5,6 @@ import { useEffect, useState } from "react";
 
 const hydrogenLineFrequency_Hz = 1420.405751768 * 10 ** 6;
 
-function getAge() {
-  let birth = 1050019200;
-  let now = Math.floor(Date.now() / 1000);
-  return now - birth;
-}
-
 function secondsToHydrogenLineCycles(secs: number) {
   return secs * hydrogenLineFrequency_Hz;
 }
@@ -108,18 +102,27 @@ const AgeHCyclesDisplay: React.FC<AgeHCyclesDisplayProps> = ({
   className,
   precision = 2,
 }) => {
-  const [cycles, setCycles] = useState<number>(0);
+  const [age, setAge] = useState<number | null>(null);
+
+  function getAge() {
+    let birth = 1050019200;
+    let now = Math.floor(Date.now() / 1000);
+    return now - birth;
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCycles(secondsToHydrogenLineCycles(getAge()));
+      setAge(getAge());
     }, 400);
-
     return () => clearInterval(interval);
-  });
+  }, [getAge]);
 
   return (
-    <FormatBigNumber num={cycles} precision={precision} className={className} />
+    <FormatBigNumber
+      num={secondsToHydrogenLineCycles(age ?? 0)}
+      precision={precision}
+      className={className}
+    />
   );
 };
 

@@ -19,11 +19,11 @@ const NotFound = () => (
     <p className="max-w-md text-foreground/60 space-y-2">
       {quote.split("\n").map((line, i) => (
         <span key={i} className="block">
-          {'>'} {line}
+          {">"} {line}
         </span>
       ))}
     </p>
-    <div>
+    <div className="space-x-8">
       <ILink href="#">Stay</ILink>
       <ILink href="/">Leave</ILink>
     </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 type ILinkProps = {
   href: string;
@@ -15,7 +16,10 @@ const ILink: React.FC<ILinkProps> = ({
 }) => {
   return (
     <Link href={href} {...props}>
-      <Button className={className} variant="link">
+      <Button
+        className={cn("p-0 m-0 inline-block h-fit w-fit", className)}
+        variant="link"
+      >
         {children}
       </Button>
     </Link>

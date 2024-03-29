@@ -26,7 +26,7 @@ export default function Home() {
           <CardHeader>
             <CardTitle>Elias Almqvist</CardTitle>
             <CardDescription className="pl-0 space-y-4">
-              <p>
+              <span className="inline-block">
                 I am a{" "}
                 {
                   <AgeHCyclesDisplay
@@ -38,23 +38,23 @@ export default function Home() {
                 <span className="text-xs text-foreground/40">(± 2 MHz)</span>{" "}
                 old <span className="font-bold">human-</span> founder, engineer,
                 and hacker with a passion for CS, physics, and mathematics.
-              </p>
-              <p>
+              </span>
+              <span className="inline-block">
                 Currently working on{" "}
-                <ILink href="https://rembr.co" target="_blank" className="px-0">
+                <ILink href="https://rembr.co" target="_blank">
                   ingenuity
                 </ILink>
                 . Some of my projects are open-source (FOSS), and if you are
                 interested, you can find them on my{" "}
-                <ILink href="https://git.wych.dev/elal" target="_blank" className="px-0">
+                <ILink href="https://git.wych.dev/elal" target="_blank">
                   self-hosted git-server
                 </ILink>{" "}
                 or{" "}
-                <ILink href="https://github.com/almqv" target="_blank" className="px-0">
+                <ILink href="https://github.com/almqv" target="_blank">
                   GitHub
                 </ILink>
                 .
-              </p>
+              </span>
             </CardDescription>
             <CardContent className="flex flex-col items-center justify-center pb-0 pt-4">
               <ExternalNav className="w-full max-w-48 flex flex-row justify-between" />
