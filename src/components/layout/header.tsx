@@ -24,9 +24,8 @@ const Header = () => (
         <NavCommand />
         <ul className="flex-row space-x-2 w-fit h-full items-center hidden sm:flex">
           {NavLinks.map((link, index) => (
-            <li>
+            <li key={index}>
               <Link
-                key={index}
                 href={link.href}
                 target={link.href.match("http") ? "_blank" : "_self"}
                 className="flex flex-row items-center"
