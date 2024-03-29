@@ -9,6 +9,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         {children}
       </main>
       <NavBinds />
+      <footer className="-mt-16 w-full h-16">
+        <div className="w-full h-full flex justify-center items-center">
+          <p className="text-foreground/20 text-sm">
+            &copy; {new Date().getFullYear()} Elias Almqvist. All rights
+            reserved.
+          </p>
+        </div>
+      </footer>
     </>
   );
 };
