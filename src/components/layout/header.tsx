@@ -7,6 +7,7 @@ import NavLinks from "../navlinks";
 import NavCommand from "./nav";
 
 import Logo from "@/components/logo";
+import ExternalNav from "../externalnav";
 
 const Header = () => (
   <header className="w-full h-14 flex flex-col justify-center items-center">
@@ -22,25 +23,7 @@ const Header = () => (
       <div className="flex flex-row items-center space-x-2">
         <ThemeButton className="w-4 h-4 hidden sm:block" />
         <NavCommand />
-        <ul className="flex-row space-x-2 w-fit h-full items-center hidden sm:flex">
-          {NavLinks.map((link, index) => (
-            <li key={index}>
-              <Link
-                href={link.href}
-                target={link.href.match("http") ? "_blank" : "_self"}
-                className="flex flex-row items-center"
-              >
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="transition-opacity hover:bg-transparent hover:opacity-75"
-                >
-                  <link.icon className="h-4 w-4" />
-                </Button>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ExternalNav className="hidden sm:flex flex-row space-x-1" />
       </div>
     </div>
     <Separator />

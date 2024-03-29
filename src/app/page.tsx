@@ -1,6 +1,7 @@
 import ThingCurve from "@/components/3d/curves/thing";
 import RenderedSection from "@/components/3d/renderedsection";
 import AgeHCyclesDisplay from "@/components/age";
+import ExternalNav from "@/components/externalnav";
 import fonts from "@/components/fonts";
 import ILink from "@/components/ilink";
 import {
@@ -14,12 +15,12 @@ import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
-    <>
+    <div className="w-full h-full overflow-y-clip">
       <RenderedSection
         id="about"
         curve={ThingCurve}
         className="relative w-full h-full px-4 md:px-8 max-w-screen-2xl items-center flex"
-        curveClassname="w-[38rem] h-[52rem] -right-32 md:right-32 overflow-clip"
+        curveClassname="w-[38rem] h-[52rem] xl:w-[58rem] xl:h-[82rem] absolute -top-16 xl:-top-48 -right-32 lg:-right-12 2xl:right-32 overflow-clip"
       >
         <Card className="max-w-screen-md">
           <CardHeader>
@@ -30,12 +31,13 @@ export default function Home() {
                 {
                   <AgeHCyclesDisplay
                     className={cn("font-bold", fonts.mono.className)}
-                    precision={6}
+                    precision={12}
                   />
                 }{" "}
-                <span className="font-bold">hydrogen-line-cycles</span> old{" "}
-                <span className="font-bold">human-</span> founder, engineer, and
-                hacker with a passion for CS, physics, and mathematics.
+                <span className="font-bold">hydrogen-line-cycles</span>{" "}
+                <span className="text-xs text-foreground/40">(± 2 MHz)</span>{" "}
+                old <span className="font-bold">human-</span> founder, engineer,
+                and hacker with a passion for CS, physics, and mathematics.
               </p>
               <p>
                 Currently working on{" "}
@@ -54,10 +56,12 @@ export default function Home() {
                 .
               </p>
             </CardDescription>
-            {/* <CardContent></CardContent> */}
+            <CardContent className="flex flex-col items-center justify-center pb-0 pt-4">
+              <ExternalNav className="w-full max-w-48 flex flex-row justify-between" />
+            </CardContent>
           </CardHeader>
         </Card>
       </RenderedSection>
-    </>
+    </div>
   );
 }

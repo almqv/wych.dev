@@ -72,7 +72,7 @@ const ThingCurve = {
   },
   particles: {
     max: maxParticles,
-    size: 0.1,
+    size: 0.07,
     color: "#888",
     darkcolor: "#444",
     opacity: 0.4,

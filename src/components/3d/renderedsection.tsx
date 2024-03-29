@@ -20,7 +20,7 @@ const RenderedSection: React.FC<
   ...props
 }) => {
   return (
-    <div className="flex w-full flex-col items-center align-middle relative">
+    <div className="flex w-full h-full flex-col items-center align-middle relative">
       <div className={cn("absolute", curveClassname)}>
         <Renderer {...curve} />
       </div>
