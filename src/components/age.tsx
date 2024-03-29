@@ -58,12 +58,18 @@ const FormatBigNumber: React.FC<FormatBigNumberProps> = ({
   const formattedBase = base.toFixed(precision);
   const suffix = suffixes[exponent];
 
-  return (
-    <span className={cn("inline-flex flex-row space-x-0.5 mr-0.5", className)}>
-      <span className="inline-block">{formattedBase}</span>
-      <span className="inline-block">{suffix}</span>
-    </span>
-  );
+  if (base) {
+    return (
+      <span
+        className={cn("inline-flex flex-row space-x-0.5 mr-0.5 pointer-events-none", className)}
+      >
+        <span className="inline-block">{formattedBase}</span>
+        <span className="inline-block">{suffix}</span>
+      </span>
+    );
+  } else {
+    return null;
+  }
 };
 
 type AgeHCyclesDisplayProps = {

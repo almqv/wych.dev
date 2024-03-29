@@ -42,10 +42,10 @@ export default function Home() {
                 <ILink href="https://rembr.co" target="_blank">
                   ingenuity
                 </ILink>
-                . Most of my projects are open-source, and if you are
-                interested, you can find all of my projects on my{" "}
+                . Some of my projects are open-source (FOSS), and if you are
+                interested, you can find them on my{" "}
                 <ILink href="https://git.wych.dev/elal" target="_blank">
-                  git-server
+                  self-hosted git-server
                 </ILink>{" "}
                 or{" "}
                 <ILink href="https://github.com/almqv" target="_blank">
