@@ -21,6 +21,21 @@ export const metadata: Metadata = {
     "founder",
     "startup",
   ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://wych.dev",
+    title: "\\wych.dev",
+    description: "In the wych elm's shadow, veritas whispers brew.",
+    images: [
+      {
+        url: "https://wych.dev/og-image.png",
+        width: 1529,
+        height: 884,
+        alt: "\\wych.dev",
+      },
+    ],
+  },
 };
 
 import { cn } from "@/lib/utils";
