@@ -5,6 +5,22 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "\\wych.dev",
   description: "In the wych elm's shadow, veritas whispers brew.",
+  keywords: [
+    "wych.dev",
+    "wych",
+    "elias",
+    "elias almqvist",
+    "almqvist",
+    "engineer",
+    "scientist",
+    "genius",
+    "polymath",
+    "software engineer",
+    "physics",
+    "mathematics",
+    "founder",
+    "startup",
+  ],
 };
 
 import { cn } from "@/lib/utils";
