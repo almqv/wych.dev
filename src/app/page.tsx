@@ -41,8 +41,8 @@ export default function Home() {
               </span>
               <span className="inline-block">
                 Currently working on{" "}
-                <ILink href="https://rembr.co" target="_blank">
-                  ingenuity
+                <ILink href="https://www.linkedin.com/company/exa-laboratories" target="_blank">
+                  Exa Labs (YC S24)
                 </ILink>
                 . Some of my projects are open-source (FOSS), and if you are
                 interested, you can find them on my{" "}
