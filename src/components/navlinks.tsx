@@ -2,6 +2,7 @@ import {
   GitHubLogoIcon as GitHub,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
+import { CalendarIcon } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 
 type NavLink = {
@@ -25,6 +26,11 @@ const NavLinks: NavLink[] = [
     label: "X",
     href: "https://x.com/fcvprzhfgsybj",
     icon: FaXTwitter,
+  },
+  {
+    label: "Book a meeting",
+    href: "/meeting",
+    icon: CalendarIcon,
   },
 ];
 
