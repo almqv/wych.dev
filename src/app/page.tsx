@@ -40,7 +40,7 @@ export default function Home() {
                 and hacker with a passion for CS, physics, and mathematics.
               </span>
               <span className="inline-block">
-                Currently working on{" "}
+                CEO of{" "}
                 <ILink href="https://exalaboratories.com" target="_blank">
                   Exa Laboratories (YC S24)
                 </ILink>
