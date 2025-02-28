@@ -12,7 +12,7 @@ type PostMeta = {
   slug: string;
 };
 
-async function getRecentPosts(): Promise<PostMeta[]> {
+async function getAllPosts(): Promise<PostMeta[]> {
   const postsDirectory = path.join(process.cwd(), 'content/essays');
   const files = await fs.readdir(postsDirectory);
 
@@ -32,17 +32,15 @@ async function getRecentPosts(): Promise<PostMeta[]> {
       })
   );
 
-  return posts
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    .slice(0, 4); // Get only the 4 most recent posts
+  return posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 }
 
 export default async function Home() {
-  const recentPosts = await getRecentPosts();
+  const posts = await getAllPosts();
 
   return (
     <main className="w-full flex justify-center px-4 mt-14">
-      <div className="w-full max-w-screen-lg md:px-4 py-8 space-y-8">
+      <div className="w-full max-w-screen-lg lg:px-4 py-8 space-y-8">
         {/* Intro */}
         <section>
           <div className="flex space-x-8 items-center mb-4">
@@ -59,7 +57,7 @@ export default async function Home() {
               . Building energy-efficient chips for AI training & inference.
             </p>
             <p>
-              I'm a dropout, autodidactic polymath, and this is my digital notebook. Everything here is written by me, and everything here is my own opinion or philosophical beliefs. They are not intended to be taken at face value, but rather as a medium for me to personally reflect on my own thoughts as a therapeutic exercise, or just for fun.
+              I'm a dropout, autodidactic polymath, and this is my digital notebook. Everything here is written by me, and everything here is my own opinion, philosophical beliefs, or just random thoughts that have no real-world application. <span className="italic font-semibold">They are not intended to be taken at face value, but rather as a medium for me to personally reflect on my own thoughts as a therapeutic exercise, or just for fun.</span>
             </p>
             <p>
               Based in the <ILink href="https://en.wikipedia.org/wiki/Silicon_Valley" target="_blank" className="font-bold text-md">Silicon Valley</ILink> (<ILink href="https://en.wikipedia.org/wiki/Bay_Area" target="_blank" className="font-bold text-md">San Francisco Bay Area</ILink>), <ILink href="https://en.wikipedia.org/wiki/United_States" target="_blank" className="font-bold text-md">United States</ILink>. Originally from <ILink href="https://en.wikipedia.org/wiki/M%C3%B6lndal" target="_blank" className="font-bold text-md">Mölndal</ILink>/<ILink href="https://en.wikipedia.org/wiki/Gothenburg" target="_blank" className="font-bold text-md">Gothenburg</ILink>, <ILink href="https://en.wikipedia.org/wiki/Sweden" target="_blank" className="font-bold text-md">Sweden</ILink>.
@@ -67,16 +65,11 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Recent Essays */}
+        {/* Essays */}
         <section>
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">Recent Essays</h2>
-            <Link href="/essays" className="text-sm text-gray-500 hover:text-gray-700">
-              View all →
-            </Link>
-          </div>
+          <h2 className="text-xl font-semibold mb-4">Essays</h2>
           <ul className="space-y-4">
-            {recentPosts.map((post) => (
+            {posts.map((post) => (
               <li key={post.slug}>
                 <Link
                   href={`/essays/${post.slug}`}
