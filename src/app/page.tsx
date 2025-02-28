@@ -76,11 +76,11 @@ export default async function Home() {
               <li key={post.slug}>
                 <Link
                   href={`/essays/${post.slug}`}
-                  className="block hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition"
+                  className="block hover:bg-gray-50 dark:hover:bg-gray-800 p-4 transition"
                 >
                   <h3 className="text-base font-medium">{post.title}</h3>
                   <time className="text-sm text-gray-500">
-                    {new Date(post.createdAt).toLocaleDateString()}
+                    {new Date(post.createdAt).toISOString().split('T')[0]}
                   </time>
                 </Link>
               </li>
