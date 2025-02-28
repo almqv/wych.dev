@@ -8,7 +8,7 @@ import Logo from "@/components/logo";
 import ExternalNav from "../externalnav";
 
 const Header = () => (
-  <header className="w-full h-14 flex flex-col justify-center items-center bg-background z-10">
+  <header className="w-full min-h-14 flex flex-col justify-center items-center bg-background z-10">
     <div className="py-2 px-4 w-full max-w-screen-lg mx-auto">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row items-center">
