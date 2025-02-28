@@ -5,8 +5,8 @@ import "./globals.css";
 import 'katex/dist/katex.min.css';
 
 export const metadata: Metadata = {
-  title: "\\wych.dev",
-  description: "In the wych elm's shadow, veritas whispers brew.",
+  title: "collected sayings of an insane sane person",
+  description: "",
   keywords: [
     "wych.dev",
     "wych",
@@ -27,16 +27,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://wych.dev",
-    title: "\\wych.dev",
-    description: "In the wych elm's shadow, veritas whispers brew.",
-    images: [
-      {
-        url: "https://wych.dev/og-image.png",
-        width: 1529,
-        height: 884,
-        alt: "\\wych.dev",
-      },
-    ],
+    title: "collected sayings of an insane sane person",
+    description: "",
   },
 };
 
