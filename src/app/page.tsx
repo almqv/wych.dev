@@ -4,6 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
+import { Separator } from "@/components/ui/separator";
 
 type PostMeta = {
   title: string;
@@ -40,12 +41,16 @@ export default async function Home() {
   const recentPosts = await getRecentPosts();
 
   return (
-    <main className="w-full flex justify-center px-4">
-      <div className="w-full max-w-prose py-8 space-y-8">
+    <main className="w-full flex items-center justify-center px-4 mt-14">
+      <div className="w-full max-w-screen-lg md:px-4 py-8 space-y-8">
         {/* Intro */}
         <section>
-          <h1 className="text-2xl font-bold mb-4">Elias Almqvist</h1>
-          <p className="text-gray-600 dark:text-gray-300">
+          <div className="flex space-x-8 items-center mb-4">
+            <h1 className="text-xl font-bold">Elias Almqvist</h1>
+            <ExternalNav className="flex gap-4" />
+          </div>
+          <Separator className="-mt-3 mb-4 max-w-[20rem]" />
+          <p className="">
             CEO of{" "}
             <ILink href="https://exalaboratories.com" target="_blank">
               Exa Laboratories (YC S24)
@@ -69,7 +74,7 @@ export default async function Home() {
                   href={`/essays/${post.slug}`}
                   className="block hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition"
                 >
-                  <h3 className="font-medium">{post.title}</h3>
+                  <h3 className="text-base font-medium">{post.title}</h3>
                   <time className="text-sm text-gray-500">
                     {new Date(post.createdAt).toLocaleDateString()}
                   </time>
@@ -78,9 +83,6 @@ export default async function Home() {
             ))}
           </ul>
         </section>
-
-        {/* External Links */}
-        <ExternalNav className="flex gap-4" />
       </div>
     </main>
   );
