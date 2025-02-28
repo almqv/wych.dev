@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+import 'katex/dist/katex.min.css';
+
 export const metadata: Metadata = {
   title: "\\wych.dev",
   description: "In the wych elm's shadow, veritas whispers brew.",
@@ -54,6 +56,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link 
+          rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" 
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background text-foreground antialiased",
