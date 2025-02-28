@@ -17,6 +17,13 @@ import { useRouter } from "next/navigation";
 import { useActionCommand } from "@/hooks/useActionCommand";
 import { useTheme } from "next-themes";
 import NavLinks from "../navlinks";
+import { useEffect, useState } from "react";
+
+type Essay = {
+  title: string;
+  slug: string;
+  createdAt: string;
+};
 
 type NavCommandProps = {
   className?: string;
@@ -26,6 +33,16 @@ const NavCommand: React.FC<NavCommandProps> = ({ className, ...props }) => {
   const router = useRouter();
   const { open: actionOpen, setOpen: setActionOpen } = useActionCommand();
   const { theme, setTheme } = useTheme();
+  const [essays, setEssays] = useState<Essay[]>([]);
+
+  useEffect(() => {
+    const fetchEssays = async () => {
+      const response = await fetch('/essays');
+      const data = await response.json();
+      setEssays(data);
+    };
+    fetchEssays();
+  }, []);
 
   const action = (
     callback: ((value: string) => Promise<void>) | ((value: string) => void),
@@ -67,29 +84,20 @@ const NavCommand: React.FC<NavCommandProps> = ({ className, ...props }) => {
               <span>Home</span>
               <CommandShortcut>⌘H</CommandShortcut>
             </CommandItem>
-            <CommandItem
-              onSelect={action(() => {
-                router.push("/posts");
-              })}
-            >
-              <GalleryHorizontalEnd className="mr-2 w-4 h-4" />
-              <span>Posts</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Appearance">
-            <CommandItem
-              onSelect={action(() => {
-                setTheme(theme === "light" ? "dark" : "light");
-              })}
-            >
-              <SunMoon className="mr-2 w-4 h-4" />
-              <span>
-                Switch to {theme === "light" ? "Dark" : "Light"} Theme
-              </span>
-              <CommandShortcut>⌘L</CommandShortcut>
-            </CommandItem>
+          <CommandGroup heading="Essays">
+            {essays.map((essay) => (
+              <CommandItem
+                key={essay.slug}
+                onSelect={action(() => {
+                  router.push(`/essays/${essay.slug}`);
+                })}
+              >
+                <GalleryHorizontalEnd className="mr-2 w-4 h-4" />
+                <span>{essay.title}</span>
+              </CommandItem>
+            ))}
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="External links">

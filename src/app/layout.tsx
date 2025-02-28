@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+import 'katex/dist/katex.min.css';
+
 export const metadata: Metadata = {
-  title: "\\wych.dev",
-  description: "In the wych elm's shadow, veritas whispers brew.",
+  title: "collected sayings of an insane sane person",
+  description: "",
   keywords: [
     "wych.dev",
     "wych",
@@ -25,16 +27,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://wych.dev",
-    title: "\\wych.dev",
-    description: "In the wych elm's shadow, veritas whispers brew.",
-    images: [
-      {
-        url: "https://wych.dev/og-image.png",
-        width: 1529,
-        height: 884,
-        alt: "\\wych.dev",
-      },
-    ],
+    title: "collected sayings of an insane sane person",
+    description: "",
   },
 };
 
@@ -54,6 +48,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link 
+          rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" 
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background text-foreground antialiased",
@@ -62,8 +62,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange
         >
           <Layout>{children}</Layout>

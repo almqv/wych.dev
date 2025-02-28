@@ -1,67 +1,93 @@
-import ThingCurve from "@/components/3d/curves/thing";
-import RenderedSection from "@/components/3d/renderedsection";
-import AgeHCyclesDisplay from "@/components/age";
 import ExternalNav from "@/components/externalnav";
-import fonts from "@/components/fonts";
 import ILink from "@/components/ilink";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import fs from 'fs/promises';
+import path from 'path';
+import matter from 'gray-matter';
+import Link from 'next/link';
+import { Separator } from "@/components/ui/separator";
 
-export default function Home() {
+type PostMeta = {
+  title: string;
+  createdAt: string;
+  slug: string;
+};
+
+async function getAllPosts(): Promise<PostMeta[]> {
+  const postsDirectory = path.join(process.cwd(), 'content/essays');
+  const files = await fs.readdir(postsDirectory);
+
+  const posts = await Promise.all(
+    files
+      .filter(file => file.endsWith('.mdx'))
+      .map(async (file) => {
+        const fullPath = path.join(postsDirectory, file);
+        const fileContents = await fs.readFile(fullPath, 'utf8');
+        const { data } = matter(fileContents);
+
+        return {
+          title: data.title,
+          createdAt: data.createdAt,
+          slug: file.replace(/\.mdx$/, ''),
+        };
+      })
+  );
+
+  return posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+}
+
+export default async function Home() {
+  const posts = await getAllPosts();
+
   return (
-    <div className="w-full h-full overflow-y-clip">
-      <RenderedSection
-        id="about"
-        curve={ThingCurve}
-        className="relative w-full h-full px-4 md:px-8 max-w-screen-2xl items-center flex"
-        curveClassname="w-[38rem] h-[52rem] xl:w-[58rem] xl:h-[82rem] absolute -top-16 xl:-top-48 -right-32 lg:-right-12 2xl:right-32 overflow-clip"
-      >
-        <Card className="max-w-screen-md">
-          <CardHeader>
-            <CardTitle>Elias Almqvist</CardTitle>
-            <CardDescription className="pl-0 space-y-4">
-              <span className="inline-block">
-                I am a{" "}
-                {
-                  <AgeHCyclesDisplay
-                    className={cn("font-bold", fonts.mono.className)}
-                    precision={12}
-                  />
-                }{" "}
-                <span className="font-bold">hydrogen-line-cycles</span>{" "}
-                <span className="text-xs text-foreground/40">(± 2 mHz)</span>{" "}
-                old <span className="font-bold">human-</span> founder, engineer,
-                and hacker with a passion for CS, physics, and mathematics.
-              </span>
-              <span className="inline-block">
-                CEO of{" "}
-                <ILink href="https://exalaboratories.com" target="_blank">
-                  Exa Laboratories (YC S24)
-                </ILink>
-                . Some of my projects are open-source (FOSS), and if you are
-                interested, you can find them on my{" "}
-                <ILink href="https://git.wych.dev/elal" target="_blank">
-                  self-hosted git-server
-                </ILink>{" "}
-                or{" "}
-                <ILink href="https://github.com/almqv" target="_blank">
-                  GitHub
-                </ILink>
-                .
-              </span>
-            </CardDescription>
-            <CardContent className="flex flex-col items-center justify-center pb-0 pt-4">
-              <ExternalNav className="w-full max-w-48 flex flex-row justify-between" />
-            </CardContent>
-          </CardHeader>
-        </Card>
-      </RenderedSection>
-    </div>
+    <main className="w-full flex justify-center px-4 mt-14">
+      <div className="w-full max-w-screen-lg lg:px-4 py-8 space-y-8">
+        {/* Intro */}
+        <section>
+          <div className="flex space-x-8 items-center mb-4">
+            <h1 className="text-xl font-bold">Elias Almqvist</h1>
+            <ExternalNav className="flex gap-4" />
+          </div>
+          <Separator className="-mt-3 mb-4 max-w-[20rem]" />
+          <div className="space-y-4">
+            <p className="">
+              CEO of{" "}
+              <ILink href="https://exalaboratories.com" target="_blank" className="font-bold text-md">
+                Exa Laboratories (YC S24)
+              </ILink>
+              . Building energy-efficient chips for AI training & inference.
+            </p>
+            <p>
+              I&apos;m a dropout, autodidactic polymath, and this is my digital notebook. Everything here is written by me, and everything here is my own opinion, philosophical beliefs, or just random thoughts that have no real-world application. <span className="italic font-semibold">They are not intended to be taken at face value, as they are nothing but a medium for me to personally reflect on my own thoughts as a therapeutic exercise, or just for fun.</span>
+            </p>
+            <p>
+              Based in <ILink href="https://en.wikipedia.org/wiki/Silicon_Valley" target="_blank" className="font-bold text-md">Silicon Valley</ILink> <ILink href="https://en.wikipedia.org/wiki/Bay_Area" target="_blank" className="font-bold text-xs">(San Francisco Bay Area)</ILink>, <ILink href="https://en.wikipedia.org/wiki/United_States" target="_blank" className="font-bold text-md">United States</ILink>. Originally from <ILink href="https://en.wikipedia.org/wiki/M%C3%B6lndal" target="_blank" className="font-bold text-md">Mölndal</ILink>/<ILink href="https://en.wikipedia.org/wiki/Gothenburg" target="_blank" className="font-bold text-md">Gothenburg</ILink>, <ILink href="https://en.wikipedia.org/wiki/Sweden" target="_blank" className="font-bold text-md">Sweden</ILink>.
+            </p>
+            <p>
+              This entire website is open source. You can find the source code here: <ILink href="https://github.com/almqv/wych.dev" target="_blank" className="font-bold text-md">github.com/almqv/wych.dev</ILink>.
+            </p>
+          </div>
+        </section>
+
+        {/* Essays */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Essays</h2>
+          <ul className="space-y-4">
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/essays/${post.slug}`}
+                  className="block hover:bg-gray-50 dark:hover:bg-gray-800 p-4 transition"
+                >
+                  <h3 className="text-base font-medium">{post.title}</h3>
+                  <time className="text-sm text-gray-500">
+                    {new Date(post.createdAt).toISOString().split('T')[0]}
+                  </time>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </main>
   );
 }
