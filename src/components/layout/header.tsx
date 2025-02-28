@@ -16,7 +16,7 @@ const Header = () => (
             href="/"
             className="flex flex-row items-center gap-x-2 hover:opacity-80 transition-opacity"
           >
-            <h1 className="text-xl font-bold">collected sayings of an insane sane person</h1>
+            <h1 className="text-xl font-bold min-w-lg">collected sayings of an insane sane person</h1>
           </Link>
         </div>
         <div className="flex flex-row items-center space-x-8">
