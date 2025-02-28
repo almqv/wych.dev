@@ -76,7 +76,7 @@ export default async function Home() {
               <li key={post.slug}>
                 <Link
                   href={`/essays/${post.slug}`}
-                  className="block hover:bg-gray-50 dark:hover:bg-gray-800 p-4 transition"
+                  className="block hover:bg-gray-50 p-4 transition"
                 >
                   <h3 className="text-base font-medium">{post.title}</h3>
                   <time className="text-sm text-gray-500">
