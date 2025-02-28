@@ -22,13 +22,13 @@ async function getPost(slug: string[]): Promise<Post | null> {
 
   const postName = slug[1];
   const postsDirectory = path.join(process.cwd(), 'content/essays');
-  
+
   try {
     const fullPath = path.join(postsDirectory, `${postName}.mdx`);
     const fileContents = await fs.readFile(fullPath, 'utf8');
-    
+
     const { data, content } = matter(fileContents);
-    
+
     return {
       title: data.title,
       createdAt: data.createdAt,
@@ -58,7 +58,7 @@ const Page = async ({ params }: { params: { dir: string[] } }) => {
           </time>
         )}
       </div>
-      <MDXRemote 
+      <MDXRemote
         source={post.content}
         options={{
           mdxOptions: {

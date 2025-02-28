@@ -15,16 +15,16 @@ const Header = () => (
           href="/"
           className="flex flex-row items-center gap-x-2 hover:opacity-80 transition-opacity"
         >
-          <Logo className="w-8 h-auto" />
+          <h1 className="text-xl font-bold">collected sayings of an insane sane person</h1>
         </Link>
       </div>
-      <div className="flex flex-row items-center space-x-2">
-        <ThemeButton className="w-4 h-4 hidden sm:block" />
-        <NavCommand />
+      <div className="flex flex-row items-center space-x-8">
+        {/* <ThemeButton className="w-4 h-4 hidden sm:block" /> */}
         <ExternalNav className="hidden sm:flex flex-row space-x-1" />
+        <NavCommand />
       </div>
     </div>
-    <Separator />
+    {/* <Separator /> */}
   </header>
 );
 export default Header;

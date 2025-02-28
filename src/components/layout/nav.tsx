@@ -69,16 +69,16 @@ const NavCommand: React.FC<NavCommandProps> = ({ className, ...props }) => {
             </CommandItem>
             <CommandItem
               onSelect={action(() => {
-                router.push("/posts");
+                router.push("/essays");
               })}
             >
               <GalleryHorizontalEnd className="mr-2 w-4 h-4" />
-              <span>Posts</span>
+              <span>Essays</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Appearance">
+          {/* <CommandGroup heading="Appearance">
             <CommandItem
               onSelect={action(() => {
                 setTheme(theme === "light" ? "dark" : "light");
@@ -90,7 +90,7 @@ const NavCommand: React.FC<NavCommandProps> = ({ className, ...props }) => {
               </span>
               <CommandShortcut>⌘L</CommandShortcut>
             </CommandItem>
-          </CommandGroup>
+          </CommandGroup> */}
           <CommandSeparator />
           <CommandGroup heading="External links">
             {NavLinks.map((link) => (
