@@ -1,67 +1,87 @@
-import ThingCurve from "@/components/3d/curves/thing";
-import RenderedSection from "@/components/3d/renderedsection";
-import AgeHCyclesDisplay from "@/components/age";
 import ExternalNav from "@/components/externalnav";
-import fonts from "@/components/fonts";
 import ILink from "@/components/ilink";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import fs from 'fs/promises';
+import path from 'path';
+import matter from 'gray-matter';
+import Link from 'next/link';
 
-export default function Home() {
+type PostMeta = {
+  title: string;
+  createdAt: string;
+  slug: string;
+};
+
+async function getRecentPosts(): Promise<PostMeta[]> {
+  const postsDirectory = path.join(process.cwd(), 'content/essays');
+  const files = await fs.readdir(postsDirectory);
+  
+  const posts = await Promise.all(
+    files
+      .filter(file => file.endsWith('.mdx'))
+      .map(async (file) => {
+        const fullPath = path.join(postsDirectory, file);
+        const fileContents = await fs.readFile(fullPath, 'utf8');
+        const { data } = matter(fileContents);
+        
+        return {
+          title: data.title,
+          createdAt: data.createdAt,
+          slug: file.replace(/\.mdx$/, ''),
+        };
+      })
+  );
+
+  return posts
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, 2); // Get only the 2 most recent posts
+}
+
+export default async function Home() {
+  const recentPosts = await getRecentPosts();
+
   return (
-    <div className="w-full h-full overflow-y-clip">
-      <RenderedSection
-        id="about"
-        curve={ThingCurve}
-        className="relative w-full h-full px-4 md:px-8 max-w-screen-2xl items-center flex"
-        curveClassname="w-[38rem] h-[52rem] xl:w-[58rem] xl:h-[82rem] absolute -top-16 xl:-top-48 -right-32 lg:-right-12 2xl:right-32 overflow-clip"
-      >
-        <Card className="max-w-screen-md">
-          <CardHeader>
-            <CardTitle>Elias Almqvist</CardTitle>
-            <CardDescription className="pl-0 space-y-4">
-              <span className="inline-block">
-                I am a{" "}
-                {
-                  <AgeHCyclesDisplay
-                    className={cn("font-bold", fonts.mono.className)}
-                    precision={12}
-                  />
-                }{" "}
-                <span className="font-bold">hydrogen-line-cycles</span>{" "}
-                <span className="text-xs text-foreground/40">(± 2 mHz)</span>{" "}
-                old <span className="font-bold">human-</span> founder, engineer,
-                and hacker with a passion for CS, physics, and mathematics.
-              </span>
-              <span className="inline-block">
-                CEO of{" "}
-                <ILink href="https://exalaboratories.com" target="_blank">
-                  Exa Laboratories (YC S24)
-                </ILink>
-                . Some of my projects are open-source (FOSS), and if you are
-                interested, you can find them on my{" "}
-                <ILink href="https://git.wych.dev/elal" target="_blank">
-                  self-hosted git-server
-                </ILink>{" "}
-                or{" "}
-                <ILink href="https://github.com/almqv" target="_blank">
-                  GitHub
-                </ILink>
-                .
-              </span>
-            </CardDescription>
-            <CardContent className="flex flex-col items-center justify-center pb-0 pt-4">
-              <ExternalNav className="w-full max-w-48 flex flex-row justify-between" />
-            </CardContent>
-          </CardHeader>
-        </Card>
-      </RenderedSection>
-    </div>
+    <main className="w-full flex justify-center px-4">
+      <div className="w-full max-w-prose py-8 space-y-8">
+        {/* Intro */}
+        <section>
+          <h1 className="text-2xl font-bold mb-4">Elias Almqvist</h1>
+          <p className="text-gray-600 dark:text-gray-300">
+            CEO of{" "}
+            <ILink href="https://exalaboratories.com" target="_blank">
+              Exa Laboratories (YC S24)
+            </ILink>
+            . Building energy-efficient chips for AI training & inference.
+          </p>
+        </section>
+
+        {/* Recent Essays */}
+        <section>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-semibold">Recent Essays</h2>
+            <Link href="/essays" className="text-sm text-gray-500 hover:text-gray-700">
+              View all →
+            </Link>
+          </div>
+          <ul className="space-y-4">
+            {recentPosts.map((post) => (
+              <li key={post.slug}>
+                <Link 
+                  href={`/essays/${post.slug}`}
+                  className="block hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition"
+                >
+                  <h3 className="font-medium">{post.title}</h3>
+                  <time className="text-sm text-gray-500">
+                    {new Date(post.createdAt).toLocaleDateString()}
+                  </time>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* External Links */}
+        <ExternalNav className="flex gap-4" />
+      </div>
+    </main>
   );
 }
