@@ -5,12 +5,16 @@ import path from 'path';
 import matter from 'gray-matter';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
+import ILink from "@/components/ilink";
 
 // Update the type to match our MDX frontmatter
 type Post = {
   title: string;
+  author?: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
   content: string;
 };
 
@@ -31,6 +35,7 @@ async function getPost(slug: string[]): Promise<Post | null> {
 
     return {
       title: data.title,
+      author: data.author,
       createdAt: data.createdAt,
       updatedAt: data.updatedAt,
       content: content,
@@ -48,15 +53,22 @@ const Page = async ({ params }: { params: { dir: string[] } }) => {
   }
 
   return (
-    <article className="prose prose-lg max-w-prose mx-auto py-8">
-      <h1>{post.title}</h1>
+    <article className="prose prose-lg w-full max-w-screen-lg px-4 py-8">
+      <ILink href="/" className="mb-4">← Home</ILink>
+      <h1 className="text-4xl font-bold mb-1">{post.title}</h1>
       <div className="text-sm text-gray-500">
-        <time>Created: {new Date(post.createdAt).toLocaleDateString()}</time>
+        <time>Created: {new Date(post.createdAt).toISOString().split('T')[0]}</time>
         {post.updatedAt && (
           <time className="ml-4">
-            Updated: {new Date(post.updatedAt).toLocaleDateString()}
+            Updated: {new Date(post.updatedAt).toISOString().split('T')[0]}
           </time>
         )}
+        {post.author && (
+          <span className="ml-4">
+            Author: {post.author}
+          </span>
+        )}
+        <Separator className="mt-4 mb-8" />
       </div>
       <MDXRemote
         source={post.content}
