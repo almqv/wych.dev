@@ -16,14 +16,8 @@ const NavBinds = () => {
         h: () => {
           router.push("/");
         },
-        p: () => {
-          router.push("/posts");
-        },
         k: () => {
           setActionOpen(!actionOpen);
-        },
-        l: () => {
-          setTheme(theme === "light" ? "dark" : "light");
         },
       }}
     />
