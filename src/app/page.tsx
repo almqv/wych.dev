@@ -51,8 +51,8 @@ export default async function Home() {
           <div className="space-y-4">
             <p className="">
               CEO of{" "}
-              <ILink href="https://exalaboratories.com" target="_blank" className="font-bold text-md">
-                Exa Laboratories (YC S24)
+              <ILink href="https://zscc.ai" target="_blank" className="font-bold text-md">
+                the Zettascale Computing Corp. (YC S24)
               </ILink>
               . Building energy-efficient chips for AI training & inference.
             </p>
