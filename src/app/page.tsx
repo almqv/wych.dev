@@ -57,26 +57,95 @@ export default async function Home() {
               . Building energy-efficient chips for AI training & inference.
             </p>
             <p>
-              I&apos;m a dropout, autodidactic polymath, and this is my digital notebook. Everything here is written by me, and everything here is my own opinion, philosophical beliefs, or just random thoughts that have no real-world application. <span className="italic font-semibold">They are not intended to be taken at face value, as they are nothing but a medium for me to personally reflect on my own thoughts as a therapeutic exercise, or just for fun.</span>
+              I am a 22-year-old dropout and autodidactic polymath, currently building{" "}
+              <ILink
+                href="https://zscc.ai"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                the future substrate for (artificial) intelligence in Silicon Valley
+              </ILink>
+              . This is my digital notebook.
             </p>
             <p>
-              Based in <ILink href="https://en.wikipedia.org/wiki/Silicon_Valley" target="_blank" className="font-bold text-md">Silicon Valley</ILink> <ILink href="https://en.wikipedia.org/wiki/Bay_Area" target="_blank" className="font-bold text-xs">(San Francisco Bay Area)</ILink>, <ILink href="https://en.wikipedia.org/wiki/United_States" target="_blank" className="font-bold text-md">United States</ILink>. Originally from <ILink href="https://en.wikipedia.org/wiki/M%C3%B6lndal" target="_blank" className="font-bold text-md">Mölndal</ILink>/<ILink href="https://en.wikipedia.org/wiki/Gothenburg" target="_blank" className="font-bold text-md">Gothenburg</ILink>, <ILink href="https://en.wikipedia.org/wiki/Sweden" target="_blank" className="font-bold text-md">Sweden</ILink>.
+              Everything here is written by me and reflects my opinions, philosophical beliefs, or random thoughts with no real-world application.{" "}
+              <span className="italic font-semibold">
+                They are not intended to be taken at face value. They are simply a medium for me to reflect on my thoughts as a therapeutic exercise, or just for fun.
+              </span>
             </p>
             <p>
-              This entire website is open source. You can find the source code here: <ILink href="https://github.com/almqv/wych.dev" target="_blank" className="font-bold text-md">github.com/almqv/wych.dev</ILink>.
+              Based in{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/Silicon_Valley"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                Silicon Valley
+              </ILink>{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/Bay_Area"
+                target="_blank"
+                className="font-bold text-xs"
+              >
+                (the San Francisco Bay Area)
+              </ILink>
+              , in the{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/United_States"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                United States
+              </ILink>
+              . Originally from{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/M%C3%B6lndal"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                Mölndal
+              </ILink>
+              /
+              <ILink
+                href="https://en.wikipedia.org/wiki/Gothenburg"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                Gothenburg
+              </ILink>
+              ,{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/Sweden"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                Sweden
+              </ILink>
+              .
+            </p>
+            <p>
+              This entire website is open-source. You can find the source code here:{" "}
+              <ILink
+                href="https://github.com/almqv/wych.dev"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                github.com/almqv/wych.dev
+              </ILink>
+              .
             </p>
           </div>
         </section>
 
         {/* Essays */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">Essays</h2>
+          <h2 className="text-xl font-semibold mb-4">Posts</h2>
           <ul className="space-y-4">
             {posts.map((post) => (
               <li key={post.slug}>
                 <Link
                   href={`/essays/${post.slug}`}
-                  className="block hover:bg-gray-50 p-4 transition"
+                  className="block hover:bg-secondary p-4 transition"
                 >
                   <h3 className="text-base font-medium">{post.title}</h3>
                   <time className="text-sm text-gray-500">

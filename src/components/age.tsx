@@ -104,18 +104,18 @@ const AgeHCyclesDisplay: React.FC<AgeHCyclesDisplayProps> = ({
 }) => {
   const [age, setAge] = useState<number | null>(null);
 
-  function getAge() {
-    let birth = 1050019200;
-    let now = Math.floor(Date.now() / 1000);
-    return now - birth;
-  }
-
   useEffect(() => {
+    function getAge() {
+      const birth = 1050019200;
+      const now = Math.floor(Date.now() / 1000);
+      return now - birth;
+    }
+
     const interval = setInterval(() => {
       setAge(getAge());
     }, 400);
     return () => clearInterval(interval);
-  }, [getAge]);
+  }, []);
 
   return (
     <FormatBigNumber

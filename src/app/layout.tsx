@@ -8,20 +8,35 @@ export const metadata: Metadata = {
   title: "collected sayings of an insane sane person",
   description: "",
   keywords: [
-    "wych.dev",
-    "wych",
     "elias",
     "elias almqvist",
     "almqvist",
-    "engineer",
-    "scientist",
-    "genius",
-    "polymath",
-    "software engineer",
-    "physics",
-    "mathematics",
-    "founder",
-    "startup",
+    "zettascale computing corp",
+    "zscc",
+    "zscc.ai",
+    "zscc ai",
+    "zscc ai corp",
+    "zscc ai corp. (yc s24)",
+    "zscc ai corp. (yc s24)",
+    "zettascale",
+    "zettascale computing",
+    "zettascale computing corp",
+    "zettascale computing corp. (yc s24)",
+    "zettascale computing corp. (yc s24)",
+    "zetta",
+    "zetta computing",
+    "zetta computing corp",
+    "zetta computing corp. (yc s24)",
+    "zetta computing corp. (yc s24)",
+    "zetta ai",
+    "zetta ai corp",
+    "zetta ai corp. (yc s24)",
+    "zetta ai corp. (yc s24)",
+    "energy efficient ai",
+    "energy efficient chips",
+    "energy efficient ai chips",
+    "energy efficient ai chips for ai training and inference",
+    "energy efficient ai chips for ai training and inference",
   ],
   openGraph: {
     type: "website",
@@ -62,7 +77,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           <Layout>{children}</Layout>
