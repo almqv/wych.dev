@@ -10,6 +10,7 @@ import Age from "@/components/age";
 type PostMeta = {
   title: string;
   createdAt: string;
+  updatedAt?: string;
   slug: string;
 };
 
@@ -28,6 +29,7 @@ async function getAllPosts(): Promise<PostMeta[]> {
         return {
           title: data.title,
           createdAt: data.createdAt,
+          updatedAt: data.updatedAt,
           slug: file.replace(/\.mdx$/, ''),
         };
       })
@@ -133,8 +135,17 @@ export default async function Home() {
                 >
                   <h3 className="text-base font-medium">{post.title}</h3>
                   <time className="text-sm text-gray-500">
-                    {new Date(post.createdAt).toISOString().split('T')[0]}
+                    Created: {new Date(post.createdAt).toISOString().split('T')[0]}
                   </time>
+                  {post.updatedAt && (
+                    <>
+                      <span className="text-sm font-bold text-gray-500"> | </span>
+                      <time className="text-sm text-gray-500">
+                        Updated: {new Date(post.updatedAt).toISOString().split('T')[0]}
+                      </time>
+                    </>
+                  )}
+                  <Separator className="mt-2" />
                 </Link>
               </li>
             ))}
