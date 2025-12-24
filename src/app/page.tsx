@@ -5,7 +5,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
 import { Separator } from "@/components/ui/separator";
-import AgeHCyclesDisplay from "@/components/age";
+import Age from "@/components/age";
 
 type PostMeta = {
   title: string;
@@ -51,28 +51,22 @@ export default async function Home() {
           <Separator className="-mt-3 mb-4 max-w-[20rem]" />
           <div className="space-y-4">
             <p className="">
-              CEO of{" "}
+              Co-Founder and CEO of{" "}
               <ILink href="https://zscc.ai" target="_blank" className="font-bold text-md">
-                the Zettascale Computing Corp. (YC S24)
-              </ILink>
-              . Building energy-efficient chips for AI training & inference.
+                the Zettascale Computing Corp.
+              </ILink> (YC S24)
+              , building energy-efficient chips for AI training & inference.
             </p>
             <p>
-              I am a <AgeHCyclesDisplay />-H-cycle-old dropout and autodidactic polymath, currently building{" "}
+              I am a <Age />-year-old autodidactic polymath, university dropout, and founder, currently building{" "}
               <ILink
                 href="https://zscc.ai"
                 target="_blank"
                 className="font-bold text-md"
               >
-                the future substrate for (artificial) intelligence in Silicon Valley
+                the hardware substrate for all future (artificial) intelligence in Silicon Valley
               </ILink>
               . This is my digital notebook.
-            </p>
-            <p>
-              Everything here is written by me and reflects my opinions, philosophical beliefs, or random thoughts with no real-world application.{" "}
-              <span className="italic font-semibold">
-                They are not intended to be taken at face value. They are simply a medium for me to reflect on my thoughts as a therapeutic exercise, or just for fun.
-              </span>
             </p>
             <p>
               Based in{" "}
@@ -82,37 +76,23 @@ export default async function Home() {
                 className="font-bold text-md"
               >
                 Silicon Valley
-              </ILink>{" "}
-              <ILink
-                href="https://en.wikipedia.org/wiki/Bay_Area"
-                target="_blank"
-                className="font-bold text-xs"
-              >
-                (the San Francisco Bay Area)
-              </ILink>
-              , in the{" "}
+              </ILink>,{" "}
               <ILink
                 href="https://en.wikipedia.org/wiki/United_States"
                 target="_blank"
                 className="font-bold text-md"
               >
                 United States
-              </ILink>
-              . Originally from{" "}
+              </ILink>.
+            </p>
+            <p>
+              Originally from{" "}
               <ILink
-                href="https://en.wikipedia.org/wiki/M%C3%B6lndal"
+                href="https://en.wikipedia.org/wiki/M%C3%B6lndal_Municipality"
                 target="_blank"
                 className="font-bold text-md"
               >
                 Mölndal
-              </ILink>
-              /
-              <ILink
-                href="https://en.wikipedia.org/wiki/Gothenburg"
-                target="_blank"
-                className="font-bold text-md"
-              >
-                Gothenburg
               </ILink>
               ,{" "}
               <ILink
@@ -125,7 +105,7 @@ export default async function Home() {
               .
             </p>
             <p>
-              This entire website is open-source. You can find the source code here:{" "}
+              Source code for this website can be found here:{" "}
               <ILink
                 href="https://github.com/almqv/wych.dev"
                 target="_blank"
@@ -141,6 +121,9 @@ export default async function Home() {
         {/* Essays */}
         <section>
           <h2 className="text-xl font-semibold mb-4">Posts</h2>
+          <p className="mb-4">
+            Everything here is written by me and is not to be taken as a comprehensive guide or overview of my beliefs or opinions to anything. These philosophical writings are simply a medium for me to reflect on my own thoughts as a therapeutic exercise, or just for fun.
+          </p>
           <ul className="space-y-4">
             {posts.map((post) => (
               <li key={post.slug}>
