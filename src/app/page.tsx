@@ -5,10 +5,12 @@ import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
 import { Separator } from "@/components/ui/separator";
+import Age from "@/components/age";
 
 type PostMeta = {
   title: string;
   createdAt: string;
+  updatedAt?: string;
   slug: string;
 };
 
@@ -27,6 +29,7 @@ async function getAllPosts(): Promise<PostMeta[]> {
         return {
           title: data.title,
           createdAt: data.createdAt,
+          updatedAt: data.updatedAt,
           slug: file.replace(/\.mdx$/, ''),
         };
       })
@@ -50,38 +53,99 @@ export default async function Home() {
           <Separator className="-mt-3 mb-4 max-w-[20rem]" />
           <div className="space-y-4">
             <p className="">
-              CEO of{" "}
+              Co-Founder and CEO of{" "}
               <ILink href="https://zscc.ai" target="_blank" className="font-bold text-md">
-                the Zettascale Computing Corp. (YC S24)
+                the Zettascale Computing Corp.
+              </ILink> (YC S24)
+              , building energy-efficient chips for AI training & inference.
+            </p>
+            <p>
+              I am a <Age />-year-old autodidactic polymath, university dropout, and founder, currently building{" "}
+              <ILink
+                href="https://zscc.ai"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                the hardware substrate for all future (artificial) intelligence in Silicon Valley
               </ILink>
-              . Building energy-efficient chips for AI training & inference.
+              . This is my digital notebook.
             </p>
             <p>
-              I&apos;m a dropout, autodidactic polymath, and this is my digital notebook. Everything here is written by me, and everything here is my own opinion, philosophical beliefs, or just random thoughts that have no real-world application. <span className="italic font-semibold">They are not intended to be taken at face value, as they are nothing but a medium for me to personally reflect on my own thoughts as a therapeutic exercise, or just for fun.</span>
+              Based in{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/Silicon_Valley"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                Silicon Valley
+              </ILink>,{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/United_States"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                United States
+              </ILink>.
             </p>
             <p>
-              Based in <ILink href="https://en.wikipedia.org/wiki/Silicon_Valley" target="_blank" className="font-bold text-md">Silicon Valley</ILink> <ILink href="https://en.wikipedia.org/wiki/Bay_Area" target="_blank" className="font-bold text-xs">(San Francisco Bay Area)</ILink>, <ILink href="https://en.wikipedia.org/wiki/United_States" target="_blank" className="font-bold text-md">United States</ILink>. Originally from <ILink href="https://en.wikipedia.org/wiki/M%C3%B6lndal" target="_blank" className="font-bold text-md">Mölndal</ILink>/<ILink href="https://en.wikipedia.org/wiki/Gothenburg" target="_blank" className="font-bold text-md">Gothenburg</ILink>, <ILink href="https://en.wikipedia.org/wiki/Sweden" target="_blank" className="font-bold text-md">Sweden</ILink>.
+              Originally from{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/M%C3%B6lndal_Municipality"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                Mölndal
+              </ILink>
+              ,{" "}
+              <ILink
+                href="https://en.wikipedia.org/wiki/Sweden"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                Sweden
+              </ILink>
+              .
             </p>
             <p>
-              This entire website is open source. You can find the source code here: <ILink href="https://github.com/almqv/wych.dev" target="_blank" className="font-bold text-md">github.com/almqv/wych.dev</ILink>.
+              Source code for this website can be found here:{" "}
+              <ILink
+                href="https://github.com/almqv/wych.dev"
+                target="_blank"
+                className="font-bold text-md"
+              >
+                github.com/almqv/wych.dev
+              </ILink>
+              .
             </p>
           </div>
         </section>
 
         {/* Essays */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">Essays</h2>
+          <h2 className="text-xl font-semibold mb-4">Posts</h2>
+          <p className="mb-4">
+            Everything here is written by me and is not to be taken as a comprehensive guide or overview of my beliefs or opinions to anything. These philosophical writings are simply a medium for me to reflect on my own thoughts as a therapeutic exercise, or just for fun.
+          </p>
           <ul className="space-y-4">
             {posts.map((post) => (
               <li key={post.slug}>
                 <Link
                   href={`/essays/${post.slug}`}
-                  className="block hover:bg-gray-50 p-4 transition"
+                  className="block hover:bg-secondary p-4 transition"
                 >
                   <h3 className="text-base font-medium">{post.title}</h3>
                   <time className="text-sm text-gray-500">
-                    {new Date(post.createdAt).toISOString().split('T')[0]}
+                    Created: {new Date(post.createdAt).toISOString().split('T')[0]}
                   </time>
+                  {post.updatedAt && (
+                    <>
+                      <span className="text-sm font-bold text-gray-500"> | </span>
+                      <time className="text-sm text-gray-500">
+                        Updated: {new Date(post.updatedAt).toISOString().split('T')[0]}
+                      </time>
+                    </>
+                  )}
+                  <Separator className="mt-2" />
                 </Link>
               </li>
             ))}
