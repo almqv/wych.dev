@@ -53,10 +53,10 @@ const Page = async ({ params }: { params: { dir: string[] } }) => {
   }
 
   return (
-    <article className="prose prose-lg w-full max-w-screen-lg px-4 py-8">
-      <ILink href="/" className="mb-4">← Home</ILink>
-      <h1 className="text-4xl font-bold mb-1">{post.title}</h1>
-      <div className="text-sm text-gray-500">
+    <article className="prose prose-lg w-full max-w-screen-lg px-4 py-8 text-foreground">
+      <ILink href="/" className="mb-4 text-foreground">← Home</ILink>
+      <h1 className="text-4xl font-bold mb-1 text-foreground">{post.title}</h1>
+      <div className="text-sm text-muted-foreground">
         <time>Created: {new Date(post.createdAt).toISOString().split('T')[0]}</time>
         {post.updatedAt && (
           <time className="ml-4">
