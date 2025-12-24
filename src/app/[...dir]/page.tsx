@@ -53,7 +53,7 @@ const Page = async ({ params }: { params: { dir: string[] } }) => {
   }
 
   return (
-    <article className="prose prose-lg w-full max-w-screen-lg px-4 py-8 text-foreground">
+    <article className="prose prose-lg dark:prose-invert prose-headings:text-foreground w-full max-w-screen-lg px-4 py-8 text-foreground">
       <ILink href="/" className="mb-4 text-foreground">← Home</ILink>
       <h1 className="text-4xl font-bold mb-1 text-foreground">{post.title}</h1>
       <div className="text-sm text-muted-foreground">
