@@ -5,6 +5,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
 import { Separator } from "@/components/ui/separator";
+import AgeHCyclesDisplay from "@/components/age";
 
 type PostMeta = {
   title: string;
@@ -57,7 +58,7 @@ export default async function Home() {
               . Building energy-efficient chips for AI training & inference.
             </p>
             <p>
-              I am a 22-year-old dropout and autodidactic polymath, currently building{" "}
+              I am a <AgeHCyclesDisplay />-H-cycle-old dropout and autodidactic polymath, currently building{" "}
               <ILink
                 href="https://zscc.ai"
                 target="_blank"
